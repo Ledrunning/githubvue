@@ -1,7 +1,13 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <Repository msg="Welcome to Your Vue.js App" />
+     <footer>
+        <img class="leftpic" alt="Site logo" src="./assets/monochrome.png" />
+      <p>
+        Author: Osman Mazinov from Arsis<br />
+      </p>
+    </footer>
+   
+    <Repository msg="my GitHub repositories" />
   </div>
 </template>
 
@@ -25,4 +31,16 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+footer {
+  text-align: center;
+  padding: 3px;
+  background-color: rgb(29, 28, 28);
+  color: white;
+  height: 50px; 
+  width: 100%; 
+}
+.leftpic {
+    float: left; 
+    margin: 0 0 5px 5px; 
+   }
 </style>
