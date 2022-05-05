@@ -1,39 +1,35 @@
 <template>
-  <div class="mb-6">
-    <section class="hero is-medium is-primary is-bold mb-6">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">My GitHub Repositories</h1>
-        </div>
-      </div>
-    </section>
-    <div class="container">
-      <div class="table-container">
-        <table class="table is-bordered is-stripped is-hoverable is-fullwidth">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Name</th>
-              <th>URL</th>
-              <th>Language</th>
-              <th>Author</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="repo in repos" v-bind:key="repo.id">
-              <td>{{ repo.id }}</td>
-              <td>{{ repo.name }}</td>
-              <td>
-                <a v-bind:href="repo.html_url">{{ repo.html_url }} </a>
-              </td>
-              <td>{{ repo.language }}</td>
-              <td>{{ repo.owner.login }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+  <v-simple-table>
+    <template v-slot:default>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>URL</th>
+          <th>Language</th>
+          <th>Description</th>
+          <th>Author</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="repo in repos" v-bind:key="repo.id">
+          <td>{{ repo.id }}</td>
+          <td>{{ repo.name }}</td>
+          <td>
+            <a v-bind:href="repo.html_url">{{ repo.html_url }} </a>
+          </td>
+          <td>{{ repo.language }}</td>
+          <td>{{ repo.description }}</td>
+          <td>{{ repo.owner.login }}</td>
+          <td>
+            <router-link>
+              <v-btn small> Commits </v-btn>
+            </router-link>
+          </td>
+        </tr>
+      </tbody>
+    </template>
+  </v-simple-table>
 </template>
 
 <script>
@@ -53,13 +49,9 @@ export default {
         this.repos = response.data;
       });
   },
-  methods: {
-    goToBlabla(id) {
-      this.$router.push({ name: "name", params: { repo: id } });
-    },
-  },
 };
 </script>
+
 <style>
 body {
   font: 14px/1.8 "Poppins", sans-serif !important;

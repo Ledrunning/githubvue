@@ -1,23 +1,17 @@
 <template>
   <div id="app">
-     <footer>
-        <img class="leftpic" alt="Site logo" src="./assets/monochrome.png" />
-      <p>
-        Author: Osman Mazinov from Arsis<br />
-      </p>
-    </footer>
-   
-    <Repository msg="my GitHub repositories" />
+      <Repository msg="My GitHub repositories" />
   </div>
 </template>
 
 <script>
 import Repository from "./components/Repository.vue";
+import Commits from "./components/Commits.vue";
 
 export default {
   name: "App",
   components: {
-    Repository,
+    Repository
   },
 };
 </script>
@@ -36,11 +30,11 @@ footer {
   padding: 3px;
   background-color: rgb(29, 28, 28);
   color: white;
-  height: 50px; 
-  width: 100%; 
+  height: 50px;
+  width: 100%;
 }
 .leftpic {
-    float: left; 
-    margin: 0 0 5px 5px; 
-   }
+  float: left;
+  margin: 0 0 5px 5px;
+}
 </style>

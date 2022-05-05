@@ -3,14 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve", 
-    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "-": "^0.0.1",
+    "@mdi/font": "^6.5.95",
+    "@vue/cli-plugin-babel": "4.1.1",
     "axios": "^0.25.0",
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "deepmerge": "4.2.2",
+    "node-sass": "^7.0.1",
+    "sass": "1.32.0",
+    "sass-loader": "12.1.0",
+    "vue": "^2.6.11",
+    "vue-class-component": "7.2.6",
+    "vue-feather-icons": "5.1.0",
+    "vuetify": "^2.6.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
