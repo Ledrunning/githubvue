@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import "@/styles/repository.css";
 import axios from "axios";
 
 export default {
@@ -51,13 +52,3 @@ export default {
   },
 };
 </script>
-
-<style>
-body {
-  font: 14px/1.8 "Poppins", sans-serif !important;
-}
-.table td,
-.table th {
-  padding: 20px !important;
-}
-</style>
