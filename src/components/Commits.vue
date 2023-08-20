@@ -8,7 +8,7 @@
       v-model="currentBranch"
     />
     <label :for="branch">{{ branch }}</label>
-    <p>vuejs/vue@{{ currentBranch }}</p>
+    <p>vuejs/vue-router@{{ currentBranch }}</p>
     <ul>
       <li v-for="record in commits" :key="record.sha">
         <a :href="record.html_url" target="_blank" class="commit">
@@ -30,17 +30,19 @@
 </template>
 
 <script>
-import Vue from "vue";
+import axios from "axios";
 
-var apiURL = "https://api.github.com/repos/vuejs/vue/commits?per_page=3&sha=";
+var apiURL =
+  "https://api.github.com/repos/vuejs/vue-router/commits?per_page=3&sha=";
 
-new Vue({
-  el: "#demo",
-
-  data: {
-    branches: ["master", "dev"],
-    currentBranch: "master",
-    commits: null,
+export default {
+  name: "Commits",
+  data() {
+    return {
+      branches: ["master", "dev"],
+      currentBranch: "master",
+      commits: null,
+    };
   },
 
   created: function () {
@@ -63,15 +65,15 @@ new Vue({
 
   methods: {
     fetchData: function () {
-      var xhr = new XMLHttpRequest();
-      var self = this;
-      xhr.open("GET", apiURL + self.currentBranch);
-      xhr.onload = function () {
-        self.commits = JSON.parse(xhr.responseText);
-        console.log(self.commits[0].html_url);
-      };
-      xhr.send();
+      axios
+        .get(apiURL + this.currentBranch)
+        .then((response) => {
+          this.commits = response.data;
+        })
+        .catch((error) => {
+          console.error("Error fetching commits:", error);
+        });
     },
   },
-});
+};
 </script>

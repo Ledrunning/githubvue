@@ -22,7 +22,7 @@
           <td>{{ repo.description }}</td>
           <td>{{ repo.owner.login }}</td>
           <td>
-            <router-link>
+            <router-link :to="`/commits/${repo.name}`">
               <v-btn small> Commits </v-btn>
             </router-link>
           </td>
