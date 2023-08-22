@@ -49,6 +49,10 @@ export default {
       currentRepoName: null,
     };
   },
+  watch: {
+    repoName: "fetchData",
+    currentBranch: "fetchData",
+  },
   created: function () {
     axios
       .get("https://api.github.com/users/ledrunning/repos")
@@ -60,6 +64,7 @@ export default {
     showCommits(repoName) {
       console.log("showCommits method called with repoName:", repoName);
       this.currentRepoName = repoName;
+      console.log("currentRepoName value:", this.currentRepoName);
     },
   },
 };

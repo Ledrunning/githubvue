@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- Loop through the branches array to create radio buttons -->
     <div v-for="branch in branches" :key="branch">
       <input
         type="radio"
@@ -46,9 +45,15 @@ export default {
     };
   },
   created: function () {
+    console.log("Commits component created");
     this.fetchData();
   },
   watch: {
+    repoName(newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.fetchData();
+      }
+    },
     currentBranch: "fetchData",
   },
   filters: {
@@ -62,8 +67,8 @@ export default {
   },
   methods: {
     fetchData: function () {
-      var apiURL = `https://api.github.com/repos/${this.repoName}/commits?per_page=3&sha=${this.currentBranch}`;
-
+      var apiURL = `https://api.github.com/repos/Ledrunning/${this.repoName}/commits`;
+      console.log("Fetching commits from URL:", apiURL);
       axios
         .get(apiURL)
         .then((response) => {
