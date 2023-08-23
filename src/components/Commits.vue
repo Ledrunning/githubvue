@@ -27,6 +27,10 @@
         <span class="date">{{ record.commit.author.date | formatDate }}</span>
       </li>
     </ul>
+
+    <div>
+      <v-btn small @click="goBack">Go Back</v-btn>
+    </div>
   </div>
 </template>
 
@@ -66,8 +70,11 @@ export default {
     },
   },
   methods: {
+    goBack() {
+      this.$emit("showRepository");
+    },
     fetchData: function () {
-      var apiURL = `https://api.github.com/repos/Ledrunning/${this.repoName}/commits`;
+      var apiURL = `https://api.github.com/repos/Ledrunning/${this.repoName}/commits?sha=${this.currentBranch}`;
       console.log("Fetching commits from URL:", apiURL);
       axios
         .get(apiURL)

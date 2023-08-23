@@ -23,26 +23,21 @@
             <td>{{ repo.description }}</td>
             <td>{{ repo.owner.login }}</td>
             <td>
-              <v-btn small @click="showCommits(repo.name)"> Commits </v-btn>
+              <v-btn small @click="emitShowCommits(repo.name)"> Commits </v-btn>
             </td>
           </tr>
         </tbody>
       </template>
     </v-simple-table>
-    <Commits v-if="currentRepoName" :repo-name="currentRepoName" />
   </div>
 </template>
 
 <script>
-import Commits from "@/components/Commits.vue";
 import "@/styles/repository.css";
 import axios from "axios";
 
 export default {
   name: "Repository",
-  components: {
-    Commits,
-  },
   data() {
     return {
       repos: null,
@@ -61,10 +56,8 @@ export default {
       });
   },
   methods: {
-    showCommits(repoName) {
-      console.log("showCommits method called with repoName:", repoName);
-      this.currentRepoName = repoName;
-      console.log("currentRepoName value:", this.currentRepoName);
+    emitShowCommits(repoName) {
+      this.$emit("showCommits", repoName);
     },
   },
 };
