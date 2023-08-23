@@ -1,4 +1,6 @@
-# git_hub_client
+# Simple web client for GitHub. 
+
+The application is in under construction.
 
 ## Project setup
 ```
