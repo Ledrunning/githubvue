@@ -35,25 +35,27 @@
 <script>
 import "@/styles/repository.css";
 import axios from "axios";
+import { loadConfig } from "@/services/ConfigLoader.js";
 
 export default {
   name: "Repository",
   data() {
     return {
-      repos: null,
+      repos: [],
       currentRepoName: null,
+      config: null,
     };
   },
   watch: {
     repoName: "fetchData",
     currentBranch: "fetchData",
   },
-  created: function () {
-    axios
-      .get("https://api.github.com/users/ledrunning/repos")
-      .then((response) => {
-        this.repos = response.data;
-      });
+  async created() {
+    this.config = await loadConfig();
+    console.log(this.config?.repository);
+    axios.get(this.config?.repository).then((response) => {
+      this.repos = response.data;
+    });
   },
   methods: {
     emitShowCommits(repoName) {

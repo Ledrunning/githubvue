@@ -11,7 +11,10 @@
       <label :for="branch">{{ branch }}</label>
     </div>
 
-    <p>{{ repo }}@{{ currentBranch }}</p>
+    <p style="font-weight: bold">
+      {{ repoName }} selected branch: {{ currentBranch }}
+    </p>
+    <hr />
     <ul>
       <li v-for="record in commits" :key="record.sha">
         <a :href="record.html_url" target="_blank" class="commit">
@@ -36,6 +39,7 @@
 
 <script>
 import axios from "axios";
+import { loadConfig } from "@/services/ConfigLoader.js";
 
 export default {
   name: "Commits",
@@ -46,10 +50,12 @@ export default {
       currentBranch: "master",
       commits: null,
       repo: "default-repo-name",
+      config: null,
     };
   },
-  created: function () {
+  async created() {
     console.log("Commits component created");
+    this.config = await loadConfig();
     this.fetchData();
   },
   watch: {
@@ -74,7 +80,7 @@ export default {
       this.$emit("showRepository");
     },
     fetchData: function () {
-      var apiURL = `https://api.github.com/repos/Ledrunning/${this.repoName}/commits?sha=${this.currentBranch}`;
+      var apiURL = `${this.config?.commits}/${this.repoName}/commits?sha=${this.currentBranch}`;
       console.log("Fetching commits from URL:", apiURL);
       axios
         .get(apiURL)
