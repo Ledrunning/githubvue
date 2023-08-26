@@ -1,6 +1,6 @@
 # Simple web client for GitHub. 
 
-The application is in under construction.
+The application is under construction.
 
 ## Project setup
 ```
