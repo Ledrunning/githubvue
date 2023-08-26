@@ -1,6 +1,6 @@
 # Simple web client for GitHub. 
 
-The application is in under construction.
+The application is under construction.
 
 ## Project setup
 ```
@@ -21,6 +21,10 @@ npm run build
 ```
 npm run lint
 ```
+
+  ## UI Layouts
+  
+  ![](githubVue.gif)
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
