@@ -30,7 +30,8 @@ npm run lint
 
 Change the following lines in the **/public/config.json** file for your or needed URLs:  
 
-```{
+```
+{
     "repository": "https://api.github.com/users/ledrunning/repos",
     "commits": "https://api.github.com/repos/Ledrunning"
 }
