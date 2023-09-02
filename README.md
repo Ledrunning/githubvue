@@ -26,5 +26,15 @@ npm run lint
   
   ![](githubVue.gif)
 
+## Configure URLs
+
+Change the following lines in the **/public/config.json** file for your or needed URLs:  
+
+```{
+    "repository": "https://api.github.com/users/ledrunning/repos",
+    "commits": "https://api.github.com/repos/Ledrunning"
+}
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
