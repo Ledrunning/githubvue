@@ -1,6 +1,18 @@
-# Simple web client for GitHub. 
+# Vue.js Web Client for GitHub Repositories
 
-The application is under construction.
+This web client is built using Vue.js to display information about GitHub repositories, including repository details and recent commits.
+
+## Features
+
+- **Repository Information:** View details about each GitHub repository, including language, name, and description.
+
+- **Commit History:** Explore the recent commits made to the repositories.
+
+## Technologies Used
+
+- **Vue.js:** The front-end of the web client is built using Vue.js, a progressive JavaScript framework.
+
+- **GitHub API:** Repository information and commit history are fetched using the GitHub API.
 
 ## Project setup
 ```
