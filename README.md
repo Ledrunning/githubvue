@@ -1,53 +1,26 @@
-# Vue.js Web Client for GitHub Repositories
+# GitHub Repositories Viewer
 
-This web client is built using Vue.js to display information about GitHub repositories, including repository details and recent commits.
+Vue 3 + Vite client that lists a GitHub user's public repositories and shows recent commits per branch.
 
-## Features
+- Search, language filter, sorting, forks toggle
+- Commits use the repository's real default branch, with a branch selector
+- Loading / error / rate-limit states, 10-minute response cache (GitHub allows 60 unauthenticated requests per hour)
+- Hash routing (`#/r/<repo>`), so the back button and direct links work
+- Dark and light theme
 
-- **Repository Information:** View details about each GitHub repository, including language, name, and description.
-
-- **Commit History:** Explore the recent commits made to the repositories.
-
-## Technologies Used
-
-- **Vue.js:** The front-end of the web client is built using Vue.js, a progressive JavaScript framework.
-
-- **GitHub API:** Repository information and commit history are fetched using the GitHub API.
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-  ## UI Layouts
-  
+-   ## UI Layouts
   ![](githubVue.gif)
 
-## Configure URLs
+## Run
 
-Change the following lines in the **/public/config.json** file for your or needed URLs:  
-
-```
-{
-    "repository": "https://api.github.com/users/ledrunning/repos",
-    "commits": "https://api.github.com/repos/Ledrunning"
-}
+```bash
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # outputs ./dist
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Change the user in `src/api.js` or create `.env.local` with `VITE_GH_USER=YourName`.
+
+## Deploy to GitHub Pages
+
+The build uses a relative base (`./`), so `dist/` can be published as is (for example with a GitHub Actions Pages workflow or by copying `dist/` into a `gh-pages` branch).
