@@ -8,6 +8,9 @@ Vue 3 + Vite client that lists a GitHub user's public repositories and shows rec
 - Hash routing (`#/r/<repo>`), so the back button and direct links work
 - Dark and light theme
 
+-   ## UI Layouts
+  ![](githubVue.gif)
+
 ## Run
 
 ```bash
